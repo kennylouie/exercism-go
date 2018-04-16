@@ -7,21 +7,22 @@ import (
 // hamming distance is the number of basepairs differing in exact sequence between 2 sequences of homologous DNA
 func Distance(a, b string) (int, error) {
 
-  // finding the number of different basepairs
+  // quick check to see if they are equal
   if a == b {
     return 0, nil
   }
 
-  // sequence lengths should be the same, else, return the
+  // lengths should be the same, otherwise return the difference
   if len(a) != len(b) {
 
     basepairLengthDifference := len(a) - len(b)
     if basepairLengthDifference > 0 {
-      basepairLengthDifference = -basepairLengthDifference
+      basepairLengthDifference *= -1
     }
     return basepairLengthDifference, errors.New("sequences are of different lengths")
   }
 
+  // hamming algo
   mismatches := 0
   for ii := 0; ii < len(a); ii++ {
 
