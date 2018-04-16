@@ -10,11 +10,13 @@ func String(toBeReversed string) string {
   toBeReversedRune := []rune(toBeReversed)
 
   lengthString := len(toBeReversedRune)
-  reverseString := ""
-  for ii := 1; ii <= lengthString; ii++ {
-    reverseString += string(toBeReversedRune[lengthString-ii])
+
+  for head, tail := 0, lengthString-1; head < tail; head, tail := head + 1, tail - 1 {
+    tmp := toBeReversedRune[head]
+    toBeReversedRune[head] = toBeReversedRune[tail]
+    toBeReversedRune[tail] = tmp
   }
 
-  return reverseString
+  return string(toBeReversedRune)
 
 }
