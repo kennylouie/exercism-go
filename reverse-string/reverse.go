@@ -2,6 +2,11 @@ package reverse
 
 func String(toBeReversed string) string {
 
+  // quick check for empty string
+  if toBeReversed == "" {
+    return ""
+  }
+
   toBeReversedRune := []rune(toBeReversed)
 
   lengthString := len(toBeReversedRune)
